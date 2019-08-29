@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'researchers' => [
+            'driver' => 'session',
+            'provider' => 'researchers',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -68,6 +71,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'researchers' => [
+            'driver' => 'eloquent',
+            'model' => App\Researcher::class,
         ],
 
         // 'users' => [
@@ -97,6 +104,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'researchers' => [
+            'provider' => 'researchers',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
     ],
 
 ];
