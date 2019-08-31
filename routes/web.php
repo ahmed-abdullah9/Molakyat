@@ -40,14 +40,29 @@ Route::prefix('user')->group(function() {
         'uses' => 'HomeController@index',
         'as' => 'user.home'
     ]);
-    // Route::get('/import_excel',[
-    //     'uses' => 'ImportExcelController@index',
-    //     'as' => 'user.importExcel'
-    // ] );
-    // Route::post('/import_excel/import',[
-    //     'uses' => 'ImportExcelController@import',
-    //     'as' => 'user.import'
-    // ]);
+
+    // --------Company Section--------
+    Route::get('/companies', [
+        'uses' => 'CompanyController@showCompany',
+        'as' => 'user.companies'
+    ]);
+    Route::get('/addCompany', [
+        'uses' => 'CompanyController@addCompany',
+        'as' => 'user.addCompany'
+    ]);
+    Route::post('/postAddCompany', [
+        'uses' => 'CompanyController@postAddCompany',
+        'as' => 'user.postAddCompany'
+    ]);
+
+    Route::get('/import_excel/{id}',[
+        'uses' => 'FinancialCenterController@index',
+        'as' => 'user.importExcel'
+    ] );
+    Route::post('/import_excel/import',[
+        'uses' => 'FinancialCenterController@import',
+        'as' => 'user.import'
+    ]);
 
 });
 
