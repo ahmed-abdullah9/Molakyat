@@ -40,6 +40,15 @@ Route::prefix('user')->group(function() {
         'uses' => 'HomeController@index',
         'as' => 'user.home'
     ]);
+    // Route::get('/import_excel',[
+    //     'uses' => 'ImportExcelController@index',
+    //     'as' => 'user.importExcel'
+    // ] );
+    // Route::post('/import_excel/import',[
+    //     'uses' => 'ImportExcelController@import',
+    //     'as' => 'user.import'
+    // ]);
+
 });
 
 
