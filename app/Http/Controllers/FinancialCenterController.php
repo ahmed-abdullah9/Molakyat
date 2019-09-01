@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ImportExcel;
+use App\Company;
 use Excel;
 
 class FinancialCenterController extends Controller
 {
     //
-    //
-    public function Index()
+    public function __construct()
     {
-        $data = ImportExcel::all();
-        return view('ImportExcel', ['data' => $data]);
+        $this->middleware('auth');
+    }
+    
+    public function index($id)
+    {
+        // $company = Company::where('id', $id);
+        return view('user.importExcel');
     }
 
-    public function Import(Request $request)
+    public function import(Request $request)
     {
         $this->validate($request, [
             'select_file'  => 'required|mimes:xls,xlsx'
