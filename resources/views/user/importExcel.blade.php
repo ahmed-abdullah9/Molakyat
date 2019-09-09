@@ -23,7 +23,7 @@
                 <strong>{{ $message }}</strong>
         </div>
         @endif
-        <form method="post" enctype="multipart/form-data" action="{{ route('user.import') }}">
+        <form method="post" enctype="multipart/form-data" action="{{ route('user.import',['id' => $id]) }}">
          {{ csrf_field() }}
          <div class="form-group">
           <table class="table">

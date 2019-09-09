@@ -59,7 +59,7 @@ Route::prefix('user')->group(function() {
         'uses' => 'FinancialCenterController@index',
         'as' => 'user.importExcel'
     ] );
-    Route::post('/import_excel/import',[
+    Route::post('/import_excel/import/{id}',[
         'uses' => 'FinancialCenterController@import',
         'as' => 'user.import'
     ]);

@@ -12,4 +12,14 @@ class Company extends Model
         return $this->hasMany('App\FinancialCenter');
     }
 
+    public function ProfitsAndLosses()
+    {
+        return $this->hasMany('App\ProfitsAndLosses');
+    }
+
+
+    public function IndirectCashFlows()
+    {
+        return $this->hasMany('App\IndirectCashFlows');
+    }
 }

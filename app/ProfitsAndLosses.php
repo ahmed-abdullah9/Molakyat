@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FinancialCenter extends Model
+class ProfitsAndLosses extends Model
 {
     //
-    protected $table = 'financial_center'; 
+    protected $table = 'profits_and_losses'; 
 
 
     public function company()
     {
         return $this->belongsTo('App\Company');
     }
+
 }

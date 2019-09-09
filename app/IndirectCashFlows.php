@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FinancialCenter extends Model
+class IndirectCashFlows extends Model
 {
     //
-    protected $table = 'financial_center'; 
-
+    protected $table = 'indirect_cash_flows';
 
     public function company()
     {
         return $this->belongsTo('App\Company');
     }
+
 }
