@@ -11,12 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [
+    'uses' => 'CompanyController@showAllCompany',
+    'as' => 'showAllCompany'
+]);
+
+Route::get('/companyDetails/{id}', [
+    'uses' => 'CompanyController@companyDetails',
+    'as' => 'companyDetails'
+]);
 
 Route::get('/login', [
-    'uses' => 'Auth\LoginController@Login',
+    'uses' => 'Auth\LoginController@userLogin',
     'as' => 'login'
 ]);
 
@@ -24,6 +34,17 @@ Route::post('/postLogin', [
     'uses' => 'Auth\LoginController@postLogin',
     'as' => 'postLogin'
 ]);
+
+Route::get('/register', [
+    'uses' => 'Auth\RegisterController@register',
+    'as' => 'register'
+]);
+
+Route::post('/postRegister', [
+    'uses' => 'Auth\RegisterController@create',
+    'as' => 'postRegister'
+]);
+
 
 Route::post('/logout', [
     'uses' => 'Auth\LoginController@Logout',
@@ -43,7 +64,7 @@ Route::prefix('user')->group(function() {
 
     // --------Company Section--------
     Route::get('/companies', [
-        'uses' => 'CompanyController@showCompany',
+        'uses' => 'CompanyController@showUserCompany',
         'as' => 'user.companies'
     ]);
     Route::get('/addCompany', [
@@ -55,14 +76,24 @@ Route::prefix('user')->group(function() {
         'as' => 'user.postAddCompany'
     ]);
 
+    Route::get('editCompany/{id}', [
+        'uses' => 'CompanyController@editCompany',
+        'as' => 'user.editCompany'
+    ]);
+    Route::post('postEditCompany/{id}', [
+        'uses' => 'CompanyController@postEditCompany',
+        'as' => 'user.postEditCompany'
+    ]);
+
     Route::get('/import_excel/{id}',[
-        'uses' => 'FinancialCenterController@index',
+        'uses' => 'ListController@index',
         'as' => 'user.importExcel'
     ] );
     Route::post('/import_excel/import/{id}',[
-        'uses' => 'FinancialCenterController@import',
+        'uses' => 'ListController@import',
         'as' => 'user.import'
     ]);
+
 
 });
 
@@ -72,4 +103,10 @@ Route::prefix('researcher')->group(function() {
         'uses' => 'ResearcherController@index',
         'as' => 'researcher.home'
     ]);
+
+    Route::get('/companies', [
+        'uses' => 'ResearcherController@showAllCompany',
+        'as' => 'researcher.showCompanies'
+    ]);
+
 });

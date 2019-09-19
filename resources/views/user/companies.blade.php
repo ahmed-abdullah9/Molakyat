@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
         <div class="row justify-content-center">
-                 <div class="col-md-8">
+                 <div class="col-md-12">
                         <div class="clearfix"></div>
                                 <div class="page-header" style="margin-bottom: 96px;">
-                                         <h2 class="float-left">Manage your Company</h2>
-                                        <div class="float-right">
+                                         <h2 class="float-right">إدارة شركاتي</h2>
+                                        <div class="float-left">
                                                 <a href="{{route('user.addCompany')}}" title="Add new Company">
                                                         <div style="padding-left: 21px;">
                                                                 <img src="https://img.icons8.com/material/48/000000/plus.png">  
@@ -22,29 +22,43 @@
                         <table class="table table-bordered table-striped">
                                 <thead>
                                         <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Activity</th>
-                                        <th scope="col">Type</th>
-                                        <th scope="col">CR</th>
-                                        <th scope="col">Option</th>
+                                        <th scope="col">الشركة</th>
+                                        <th scope="col">إجمالي الإيرادات</th>
+                                        <th scope="col">تكلفة مبيعات</th>
+                                        <th scope="col">دخل آخر</th>
+                                        <th scope="col">إجمالي الدخل التشغيلي</th>
+                                        <th scope="col">إجمالي مصاريف العمليات</th>
+                                        <th scope="col">ربح (خسارة) العمليات</th>
+                                        <th scope="col">الربح (الخسارة) قبل الزكاة وضريبة الدخل، العمليات المستمرة</th>
+                                        <th scope="col">*العمليات المستمرة</th>
+                                        <th scope="col">ربح (خسارة) الفترة من العمليات المستمرة</th>
+                                        <th scope="col">خيارات</th>
+                                        
                                         </tr>
                                 </thead>
                                 <tbody>
   
                                         @foreach ($companies as $company)
-                                        <tr>
-                                                <th scope="row">{{$company->id}}</th>
-                                                <td>{{$company->name}}</td>
-                                                <td>{{$company->activity}}</td>
-                                                <td>{{$company->type}}</td>
-                                                <td>{{$company->CR}}</td>
-                                                <td> <button class="btn btn-primary" onclick="window.location='{{ url("user/import_excel/$company->id ") }}'">
-                                                        Details</button> 
-                                                </td>
-                                        </tr>
-                                    @endforeach
-                    
+                                                <tr>
+                                                        <td>
+                                                            <a href="{{route('user.importExcel', ['id' => $company->id])}}">
+                                                                    {{$company->name}}</a></td>
+                                                        @if ($company->getProfitsAndLosses() != null )
+                                                            <td>{{$company->getProfitsAndLosses()['revenues'] ?? ''}}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['costOfsales'] ?? '' }}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['otherIncome'] ?? '' }}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['totalOperatingIncome'] ?? '' }}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['totalOperatingExpenses'] ?? ''}}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['profitOfOperations']  ?? ''}}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['continuingOperations'] ?? ''}}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['zakatExpense'] ?? '' }}</td>
+                                                            <td>{{$company->getProfitsAndLosses()['profitFromContinuousOperations'] ?? '' }}</td>
+                                                            <td> <button class="btn btn-primary" onclick="window.location='{{ url("user/import_excel/$company->id ") }}'">
+                                                                Details</button> 
+                                                             </td>
+                                                        @endif
+                                                </tr>
+                                        @endforeach                    
                                 </tbody>
                         </table>
                 </div>

@@ -18,7 +18,7 @@ class CreateProfitsAndLossesTable extends Migration
             $table->increments('id');
             $table->integer('year');
             $table->Integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             // From ID 3 - 8
             $table->double('revenues1')->nullable();
             $table->double('revenues2')->nullable();

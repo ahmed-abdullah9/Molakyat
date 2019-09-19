@@ -18,7 +18,7 @@ class CreateIndirectCashFlowsTable extends Migration
             $table->increments('id');
             $table->integer('year');
             $table->Integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             // ID 4
             $table->double('profit_before_zakat')->nullable();
             // FORM ID 8 - 10

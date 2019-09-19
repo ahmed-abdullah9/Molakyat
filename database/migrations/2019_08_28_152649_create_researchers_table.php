@@ -16,8 +16,11 @@ class CreateResearchersTable extends Migration
         Schema::create('researchers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('phone',10)->unique();
+
+            // $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

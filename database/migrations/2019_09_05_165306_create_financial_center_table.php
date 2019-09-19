@@ -16,7 +16,7 @@ class CreateFinancialCenterTable extends Migration
         Schema::create('financial_center', function (Blueprint $table) {
             $table->increments('id');
             $table->Integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->integer('year');
             //from 3 - 22
             $table->double('current_assets1')->nullable();

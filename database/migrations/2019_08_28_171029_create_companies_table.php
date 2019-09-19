@@ -17,7 +17,10 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->Integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('CR');
+            $table->string('name');
+            $table->string('username');
+            $table->integer('sector');
+
             $table->timestamps();
         });
     }

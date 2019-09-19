@@ -12,28 +12,9 @@ class ImportIndirectCashFlows
 
     public static function handleExcel($data, $company_id)
     {
-        $collection = collect([[], []]);
-        foreach($data as $key => $row)
+        
+        foreach ($data->toArray() as $key => $value) 
         {
-            if ($row[7] == null) {
-                $collection->put(1, array_merge($collection[1], [0]));
-            } else if (is_numeric($row[7])) {
-                $collection->put(1, array_merge($collection[1], [$row[7]]));
-            } else {
-                return False;
-            }
-
-            if ($row[6] == null) {
-                $collection->put(0, array_merge($collection[0], [0]));
-            } else if (is_numeric($row[6])) {
-                $collection->put(0, array_merge($collection[0], [$row[6]]));
-            } else {
-                return False;
-            }
-        }            
-
-        foreach ($collection->toArray() as $key => $value) {
-
             $IndirectCashFlows[] = array(
                 'company_id' => $company_id,
                 'year' => $value[0],

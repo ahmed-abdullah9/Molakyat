@@ -37,24 +37,27 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:researchers')->except('logout');
+        $this->middleware('guest')->except('Logout');
+    }
+
+    public function userLogin()
+    {
+        return view('auth/user/login');
     }
 
     public function login()
     {
-        return view('auth/login');
+        return view('auth/user/login');
     }
-
     public function postLogin(Request $request) {
 
-        $email = $request['email'];
+        $phone = $request['mobile'];
         $password = $request['password'];
         $type = $request['type'];
-        
 
         switch ($type) {
             case '0':
-                if(Auth::guard('researchers')->attempt(['email' => $email, 'password' => $password])) {
+                if(Auth::guard('researchers')->attempt(['phone' => $phone, 'password' => $password])) {
 
                     return redirect()->route('researcher.home');
                 } else {
@@ -63,7 +66,7 @@ class LoginController extends Controller
                 break;
 
             case '1':
-                if(Auth::attempt(['email' => $email, 'password' => $password])) {
+                if(Auth::attempt(['phone' => $phone, 'password' => $password])) {
                             
                    return redirect()->route('user.home');
                 } else {
@@ -76,6 +79,7 @@ class LoginController extends Controller
         }
 
     }
+
     public function Logout()
     {
         if (Auth::guard('researchers')->check()) {
