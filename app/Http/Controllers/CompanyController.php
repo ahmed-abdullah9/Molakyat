@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Company;
 use Auth;
 use App\Sectors;
-use App\Enums\Sector;
 use App\ProfitsAndLosses;
 use App\FinancialCenter;
 use App\ComprehensiveIncome;
