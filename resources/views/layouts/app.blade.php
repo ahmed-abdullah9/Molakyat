@@ -32,9 +32,12 @@
                       <div id="navbarSupportedContent" class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
                           <li class="nav-item active"><a href="#" class="nav-link">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                          <li class="nav-item hvr-underline-from-right">
+                            <a class="nav-link" href="{{ route('showAllCompany') }}">الشركات</a>
+                        </li>
                           @if(Auth::guard('web')->check())
                           <li class="nav-item hvr-underline-from-right">
-                              <a class="nav-link" href="{{ route('user.companies') }}">الشركات</a>
+                              <a class="nav-link" href="{{ route('user.companies') }}">شركاتي</a>
                           </li>
                           @endif
                           <li class="nav-item"><a href="#" class="nav-link">من نحن </a></li>
