@@ -22,7 +22,7 @@
                     <div class="container">
                       <a href="{{ route('showAllCompany') }}" class="navbar-brand">
                         <!-- Logo Image -->
-                        <img src="/Molakyat/public/img/molkyat.jpeg" width="200" height="70" alt="" class="d-inline-block align-middle mr-2" href>
+                        <img src={{ asset("/img/molkyat.jpeg") }} width="300" height="70" alt="Molkyat Logo" class="d-inline-block align-middle mr-2" href>
                         <!-- Logo Text -->
                         <span class="text-uppercase font-weight-bold"></span>
                       </a>
@@ -31,7 +31,7 @@
                   
                       <div id="navbarSupportedContent" class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
-                          <li class="nav-item active"><a href="#" class="nav-link">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
+                          <li class="nav-item active"><a href="{{ route('showAllCompany') }}" class="nav-link">الصفحة الرئيسية <span class="sr-only">(current)</span></a></li>
                           <li class="nav-item hvr-underline-from-right">
                             <a class="nav-link" href="{{ route('showAllCompany') }}">الشركات</a>
                         </li>
