@@ -39,6 +39,7 @@ class CreateFinancialCenterTable extends Migration
             $table->double('current_assets18')->nullable();
             $table->double('current_assets19')->nullable();
             $table->double('current_assets20')->nullable();
+            // line 24-25
             $table->double('current_tax_assets1')->nullable();
             $table->double('current_tax_assets2')->nullable();
             // line 28

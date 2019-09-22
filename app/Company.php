@@ -31,7 +31,7 @@ class Company extends Model
     {
         $profitsAndLosses = $this;
         $profit = ProfitsAndLosses::where('company_id', $profitsAndLosses->id)->latest('year')->first();
-    //    dd($profitsAndLosses->id);
+
         if ($profit == null) {
             return collect();
         }

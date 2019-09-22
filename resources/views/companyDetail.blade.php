@@ -7,7 +7,8 @@
     <h2> القوائم المالية</h2>
     <br />
     <nav class="nav nav-pills nav-fill">
-        <a class="nav-item nav-link active show" href="#home" checked data-toggle="tab" >مركز مالي غير متداول</a>
+        <a class="nav-item nav-link active show" href="#about" checked data-toggle="tab" >عن الشركة</a>
+        <a class="nav-item nav-link" href="#home" checked data-toggle="tab" >مركز مالي غير متداول</a>
         <a class="nav-item nav-link" href="#ready" data-toggle="tab">ربح وخسارة حسب الوظيفة </a>
         <a class="nav-item nav-link" href="#completed" data-toggle="tab">دخل شامل بعد الضريبة </a>
         <a class="nav-item nav-link" href="#allOrder" data-toggle="tab">تدفقات نقدية غير مباشرة </a>
@@ -15,8 +16,12 @@
 
     
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active show" id="home">
-            <table border="1" class="table table-bordered">
+
+            <div class="tab-pane fade in active show" id="about">
+                
+            </div>
+        <div class="tab-pane fade " id="home">
+            <table border="1" class="table table-bordered ">
                     <tr>
                         <td class="list">قائمة المركز المالي، متداول/ غير متداول، غير الموحدة </td>
                             <td class="list"> النقد وأرصدة لدى البنوك</td>
@@ -50,18 +55,9 @@
                                 إيجار مستحق القبض
 
                             </td>             
-                            <td>
-                               مصاريف مدفوعة مقدما
-
-                            </td>        
-                            <td class="list">
-                              إيرادات مستحقة
-
-                            </td>        
-                            <td class="list">
-                               أعمال تحت التنفيذ ( إيرادات لم يصدر بها فواتير)
-
-                            </td>        
+                            <td  class="list">مصاريف مدفوعة مقدما</td>        
+                            <td class="list"> إيرادات مستحقة</td>        
+                            <td class="list">أعمال تحت التنفيذ ( إيرادات لم يصدر بها فواتير)</td>        
                             <td class="list">
                                     أرصدة مستحقة من جهات ذات علاقة، متداولة
                             </td>  
