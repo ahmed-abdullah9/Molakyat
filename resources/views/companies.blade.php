@@ -8,15 +8,9 @@
                 <div class="page-header" style="margin-bottom: 96px;">
                     <h2 class="float-right">جميع الشركات</h2>
                     <div class="float-left">
-                        {{-- <a href="{{route('companyDetails', ['id' => $companies->id] )}}" title="Add new Company">
-                            <div style="padding-left: 21px;">
-                                    <img src="https://img.icons8.com/material/48/000000/plus.png">  
-                            </div>
-                            <div>Add new Company</div>
-                        </a>                        --}}
+
                     </div>
                     <div class="clearfix"></div>
-                    {{-- <label class="float-right" for="business_activities"> القطاع</label>                                         --}}
                     <select class="form-control m-bot8 col-md-6" name="business_activities">    
                         @foreach($sectors as $sector)
                             <option value="{{$sector->id}}">{{$sector->name}}</option>
@@ -28,16 +22,16 @@
                     <table class="table table-bordered table-striped">
                             <thead>
                                     <tr style="background-color: #223a42 !important; color: #ccc;">
-                                    <th scope="col">الشركة</th>
-                                    <th scope="col">إجمالي الإيرادات</th>
-                                    <th scope="col">تكلفة مبيعات</th>
-                                    <th scope="col">دخل آخر</th>
-                                    <th scope="col">إجمالي الدخل التشغيلي</th>
-                                    <th scope="col">إجمالي مصاريف العمليات</th>
-                                    <th scope="col">ربح (خسارة) العمليات</th>
-                                    <th scope="col">الربح (الخسارة) قبل الزكاة وضريبة الدخل، العمليات المستمرة</th>
-                                    <th scope="col">*العمليات المستمرة</th>
-                                    <th scope="col">ربح (خسارة) الفترة من العمليات المستمرة</th>                                    
+                                    <th scope="col" style="vertical-align: inherit;">الشركة</th>
+                                    <th style="white-space: nowrap; vertical-align: inherit;" scope="col">المبيعات</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">تكلفة المبيعات</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">ايرادات اخرى</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">إجمالي الإيرادات</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">إجمالي المصاريف</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">صافي الدخل من العمليات</th>
+                                    <th scope="col" style="vertical-align: inherit;">صافي الدخل قبل الزكاة والضريبة</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">الزكاة والضريبة</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">صافي الدخل</th>                                    
                                     </tr>
                             </thead>
                             <tbody>
@@ -45,12 +39,10 @@
                                 {{-- <tr> --}}
                                     @foreach ($sectors as $sector)
                                     <tr>
-                                        
                                         <td colspan="12" style="background: #0092D5 ; color: #fff; text-align: right;">
                                             {{$sector->name}} 
                                         </td>
                                     </tr>
-                                    
                                         @foreach ($sector->getCompany() as $company)
                                             <tr>
                                                     <td>

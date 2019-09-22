@@ -24,6 +24,7 @@ class CompanyController extends Controller
     // for researchers 
     public function showAllCompany()
     {
+        // return view('admin/index');
         $companies = Company::all();
         $sectors = Sectors::all();
         return view('companies', ['companies' => $companies, 'sectors' => $sectors]);
@@ -33,7 +34,6 @@ class CompanyController extends Controller
     {
         $companies = Company::where('id',$id)->first();
         $user_id = Auth::id();
-        // $companies = Company::where('user_id',$user_id)->get();
         $FinancialCenter = FinancialCenter::where('company_id', $id)->get();
         $FinancialCenter->makeHidden(['id','company_id','created_at', 'updated_at']);
         $inserted = array("HHHHHHHHH" ); // not necessarily an array, see manual quote
