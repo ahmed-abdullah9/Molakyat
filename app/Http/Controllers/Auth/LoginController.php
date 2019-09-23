@@ -40,15 +40,28 @@ class LoginController extends Controller
         $this->middleware('guest')->except('Logout');
     }
 
+    public function showAdminLoginForm()
+    {
+        return view('admin.login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        if (Auth::guard('admin')->attempt(['phone' => $request['mobile'], 'password' => $request['password']])) 
+        {
+            return redirect()->route('admin.index');
+        }else {
+            return redirect()->back();
+        }
+    }
+
+
+
     public function userLogin()
     {
         return view('auth/user/login');
     }
 
-    public function login()
-    {
-        return view('auth/user/login');
-    }
     public function postLogin(Request $request) {
 
         $phone = $request['mobile'];
@@ -57,8 +70,8 @@ class LoginController extends Controller
 
         switch ($type) {
             case '0':
-                if(Auth::guard('researchers')->attempt(['phone' => $phone, 'password' => $password])) {
-
+                if(Auth::guard('researchers')->attempt(['phone' => $phone, 'password' => $password])) 
+                {
                     return redirect()->route('researcher.home');
                 } else {
                     return redirect()->back();
@@ -66,8 +79,8 @@ class LoginController extends Controller
                 break;
 
             case '1':
-                if(Auth::attempt(['phone' => $phone, 'password' => $password])) {
-                            
+                if(Auth::attempt(['phone' => $phone, 'password' => $password])) 
+                {
                    return redirect()->route('user.home');
                 } else {
                     return redirect()->back();

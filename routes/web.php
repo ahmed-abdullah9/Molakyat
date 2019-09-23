@@ -25,6 +25,18 @@ Route::get('/companyDetails/{id}', [
     'as' => 'companyDetails'
 ]);
 
+
+Route::get('/mng', [
+    'uses' => 'Auth\LoginController@showAdminLoginForm',
+    'as' => 'adminLogin'
+]);
+
+Route::post('/mngpostLogin', [
+    'uses' => 'Auth\LoginController@adminLogin',
+    'as' => 'adminPostLogin'
+]);
+
+
 Route::get('/login', [
     'uses' => 'Auth\LoginController@userLogin',
     'as' => 'login'
@@ -51,6 +63,19 @@ Route::post('/logout', [
     'as' => 'logout'
 ]);
 
+
+Route::prefix('admin')->group(function() {
+    Route::get('/', [
+        'uses' => 'AdminController@index',
+        'as' => 'admin.index'
+    ]);
+
+    Route::get('/investmentsRequests', [
+        'uses' => 'InvestmentsRequestsController@showAllRequest',
+        'as' => 'admin.investmentsRequests'
+    ]);
+    
+    });
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

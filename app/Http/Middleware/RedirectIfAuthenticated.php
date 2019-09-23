@@ -22,6 +22,11 @@ class RedirectIfAuthenticated
             if ($guard == "researchers" && Auth::guard($guard)->check()) {
                 return redirect()->route('researcher.home');
             }
+
+            if ($guard == "admin" && Auth::guard($guard)->check()) {
+                return redirect()->route('admin.index');
+            }
+
             if (Auth::guard($guard)->check()) {
                 return redirect()->route('user.home');
             }

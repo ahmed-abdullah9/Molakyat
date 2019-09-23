@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('mobile number') }}</label>
+                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('رقم الجوال') }}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('الرقم السري') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row ">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">Type of User</label>
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('نوع المستخدم') }}</label>
 
                             <div class="col-md-6">
                                 <select id="type" name="type" class="browser-default custom-select">

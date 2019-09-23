@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('adminLogin') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('postLogin') }}">
+                    <form method="POST" action="{{ route('adminPostLogin') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('mobile number') }}</label>
+                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('رقم الجوال') }}</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('الرقم السري') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -38,18 +38,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group row ">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">Type of User</label>
-
-                            <div class="col-md-6">
-                                <select id="type" name="type" class="browser-default custom-select">
-                                    <option value="0">Researchers</option>
-                                    <option value="1">user</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

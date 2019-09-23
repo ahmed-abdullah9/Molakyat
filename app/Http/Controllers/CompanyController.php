@@ -36,8 +36,7 @@ class CompanyController extends Controller
         $user_id = Auth::id();
         $FinancialCenter = FinancialCenter::where('company_id', $id)->get();
         $FinancialCenter->makeHidden(['id','company_id','created_at', 'updated_at']);
-        $inserted = array("HHHHHHHHH" ); // not necessarily an array, see manual quote
-        // $keys = array_splice( $FinancialCenter[0]->toArray(), 53, 0,  $inserted); // splice in at position 3
+
         $imagesData = $FinancialCenter->map(function ($post) {
             $test= $post->toArray();
             $TotalCurrentTaxAssets = $post->current_tax_assets1 + $post->current_tax_assets2;
