@@ -11,7 +11,7 @@
                         </i>
                     </div>
                     <div>Analytics Dashboard
-                        <div class="page-title-subheading">This is an example dashboard created using build-in elements and components.
+                        <div class="page-title-subheading">
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="card mb-3 widget-content bg-midnight-bloom">
                     <div class="widget-content-wrapper text-white">
                         <div class="widget-content-left">
-                            <div class="widget-heading">Total Orders</div>
+                            <div class="widget-heading">Total Request</div>
                             <div class="widget-subheading">Last year expenses</div>
                         </div>
                         <div class="widget-content-right">
@@ -126,7 +126,7 @@
                     <div class="card-header-tab card-header-tab-animation card-header">
                         <div class="card-header-title">
                             <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                            Sales Report
+                            Investment Report
                         </div>
                         <ul class="nav">
                             <li class="nav-item"><a href="javascript:void(0);" class="active nav-link">Last</a></li>

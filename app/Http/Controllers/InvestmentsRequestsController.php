@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\InvestmentsRequests;
+use Auth;
 
 class InvestmentsRequestsController extends Controller
 {
@@ -19,25 +20,32 @@ class InvestmentsRequestsController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function addRequest()
+    // {
+    //     return view('admin.addRequests');
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function postAddRequests(Request $request)
     {
-        //
+        if($request->ajax()){
+            $InvestmentsRequests = new InvestmentsRequests();
+            $InvestmentsRequests->user_id = Auth::id();
+            $InvestmentsRequests->company_id = $request->company_id;
+            $InvestmentsRequests->description =$request->description;
+            $InvestmentsRequests->type = 0;
+            $InvestmentsRequests->status = 0;
+            if($InvestmentsRequests->save()) {
+                return response()->json("Success");
+            }
+            return redirect()->back();
+        }
+       
     }
 
     /**

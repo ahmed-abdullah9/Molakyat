@@ -2,3 +2,22 @@ table th{
     white-space: nowrap; 
     vertical-align: inherit;
 }
+
+table td{
+    text-align: center;
+}
+
+.modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1rem auto -1rem -1rem;
+}
+
+.right-element{
+    display: block; 
+    text-align: right;
+}
+
+.close-tap{
+    margin: auto 22px;
+
+}

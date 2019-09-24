@@ -51,15 +51,60 @@
                                                         </a>
                                                     </td>
                                                     @if ($company->getProfitsAndLosses() != null )
-                                                        <td style="font-size: .875em;">{{$company->getProfitsAndLosses()['revenues'] ?? ''}}</td>
-                                                        <td style="font-size: .875em;">{{$company->getProfitsAndLosses()['costOfsales'] ?? '' }}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['otherIncome'] ?? '' }}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['totalOperatingIncome'] ?? '' }}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['totalOperatingExpenses'] ?? ''}}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['profitOfOperations']  ?? ''}}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['continuingOperations'] ?? ''}}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['zakatExpense'] ?? '' }}</td>
-                                                        <td>{{$company->getProfitsAndLosses()['profitFromContinuousOperations'] ?? '' }}</td>
+                                                        @if (!empty($company->getProfitsAndLosses()['revenues']))
+                                                            <td>{{ number_format($company->getProfitsAndLosses()['revenues'], 2)}}</td>    
+                                                        @else
+                                                               <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['costOfsales']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['costOfsales'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['otherIncome'] ))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['otherIncome'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['totalOperatingIncome']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['totalOperatingIncome'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['totalOperatingExpenses']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['totalOperatingExpenses'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['profitOfOperations']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['profitOfOperations'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['continuingOperations']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['continuingOperations'], 2)}}</td>
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['zakatExpense']))
+                                                            <td>{{number_format($company->getProfitsAndLosses()['zakatExpense'], 2)}}</td>  
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
+
+                                                        @if (!empty($company->getProfitsAndLosses()['profitFromContinuousOperations']))
+                                                            
+                                                            <td>{{number_format($company->getProfitsAndLosses()['profitFromContinuousOperations'], 2)}}</td>  
+                                                        @else
+                                                            <td>-</td> 
+                                                        @endif
                                                         
                                                     @endif
                                             </tr>

@@ -69,7 +69,6 @@ Route::prefix('admin')->group(function() {
         'uses' => 'AdminController@index',
         'as' => 'admin.index'
     ]);
-
     Route::get('/investmentsRequests', [
         'uses' => 'InvestmentsRequestsController@showAllRequest',
         'as' => 'admin.investmentsRequests'
@@ -86,7 +85,6 @@ Route::prefix('user')->group(function() {
         'uses' => 'HomeController@index',
         'as' => 'user.home'
     ]);
-
     // --------Company Section--------
     Route::get('/companies', [
         'uses' => 'CompanyController@showUserCompany',
@@ -100,7 +98,6 @@ Route::prefix('user')->group(function() {
         'uses' => 'CompanyController@postAddCompany',
         'as' => 'user.postAddCompany'
     ]);
-
     Route::get('editCompany/{id}', [
         'uses' => 'CompanyController@editCompany',
         'as' => 'user.editCompany'
@@ -109,7 +106,6 @@ Route::prefix('user')->group(function() {
         'uses' => 'CompanyController@postEditCompany',
         'as' => 'user.postEditCompany'
     ]);
-
     Route::get('/import_excel/{id}',[
         'uses' => 'ListController@index',
         'as' => 'user.importExcel'
@@ -119,8 +115,18 @@ Route::prefix('user')->group(function() {
         'as' => 'user.import'
     ]);
 
+    // Route::post('/addInvestmentsRequests/{company_id}', [
+    //     'uses' => 'InvestmentsRequestsController@postAddRequests',
+    //     'as' => 'user.addInvestmentsRequests'
+    // ]);
 
 });
+
+Route::post('/addInvestmentsRequests', [
+    'uses' => 'InvestmentsRequestsController@postAddRequests',
+    'as' => 'addInvestmentsRequests'
+]);
+
 
 
 Route::prefix('researcher')->group(function() {
@@ -128,7 +134,6 @@ Route::prefix('researcher')->group(function() {
         'uses' => 'ResearcherController@index',
         'as' => 'researcher.home'
     ]);
-
     Route::get('/companies', [
         'uses' => 'ResearcherController@showAllCompany',
         'as' => 'researcher.showCompanies'

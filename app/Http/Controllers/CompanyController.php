@@ -102,7 +102,8 @@ class CompanyController extends Controller
         return view('companyDetail', ['FinancialCenter' => $FinancialCenter->toArray(), 
                                     'ProfitsAndLosses' => $ProfitsAndLosses->toArray(),
                                     'ComprehensiveIncome' => $ComprehensiveIncome->toArray(),
-                                    'IndirectCashFlows' => $IndirectCashFlows->toArray()]);
+                                    'IndirectCashFlows' => $IndirectCashFlows->toArray(),
+                                    'company_id' => $companies->id]);
                                    
     }
 

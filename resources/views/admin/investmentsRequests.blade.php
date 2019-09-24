@@ -74,18 +74,18 @@
                     <div class="table-responsive">
                             <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                                 <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>UserName</th>
+                                        <th class="text-center">Company</th>
+                                        <th class="text-center">Type</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Actions</th>
+                                    
+                                    </tr>
+                                </thead>
+                                    <tbody>
                                     @foreach ($InvestmentsRequests as $InvestmentsRequest)
-                                        <tr>
-                                            <th class="text-center">#</th>
-                                            <th>{{$InvestmentsRequest->user_id->name}}</th>
-                                            <th class="text-center">Company</th>
-                                            <th class="text-center">Type</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Actions</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            
                                         <tr>
                                             <td class="text-center text-muted">#345</td>
                                             <td>
@@ -97,17 +97,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="widget-content-left flex2">
-                                                            <div class="widget-heading">John Doe</div>
+                                                            <div class="widget-heading">{{$InvestmentsRequest->user->name}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="text-center">Madrid</td>
-                                            <td class="text-center">
-                                                <div class="badge badge-warning">Pending</div>
-                                            </td>
+                                            <td class="text-center">{{$InvestmentsRequest->company->name}}</td>
                                             <td class="text-center">investments</td>
-
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">Pending</div>
+                                                </td>
                                             <td class="text-center">
                                                 <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
                                             </td>

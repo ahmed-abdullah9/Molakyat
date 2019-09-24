@@ -4,7 +4,40 @@
 <link href="{{ asset('css/global.css') }}" rel="stylesheet">
 
   <div class="container">
-    <h2> القوائم المالية</h2>
+      <div class="row">
+
+          <h2 class="text-md-right col-10"> القوائم المالية</h2>
+          @if(Auth::guard('web')->check())
+          <button type="button" class="btn btn-primary float-left"  data-toggle="modal" data-target="#exampleModal" >طلب استثمار</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">طلب استثمار</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                            {{ csrf_field() }}
+                            <input type="hidden" id="company_id" name="company_id" value="{{$company_id}}"/>
+                            <div class="form-group">
+                                <label for="description" class="col-form-label right-element"> ملاحظة </label>
+                                <textarea class="form-control" id="description" placeholder="اختياري" name="description"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary close-tap" data-dismiss="modal">{{$company_id}}</button>
+                                <button type="button" id="ajaxSubmit" class="btn btn-primary">إرسال</button>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                @endif
+      </div>
+          
     <br />
     <nav class="nav nav-pills nav-fill">
         <a class="nav-item nav-link active show" href="#about" checked data-toggle="tab" >عن الشركة</a>

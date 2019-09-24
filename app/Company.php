@@ -71,5 +71,11 @@ class Company extends Model
         ]);
         return $collection;
     }
+
+    public function investmentsRequests()
+    {
+        return $this->hasMany('App\InvestmentsRequests');
+    }
+
     
 }
