@@ -27,7 +27,7 @@
                                 <textarea class="form-control" id="description" placeholder="اختياري" name="description"></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary close-tap" data-dismiss="modal">{{$company_id}}</button>
+                                <button type="button" class="btn btn-secondary close-tap" data-dismiss="modal">إغلاق</button>
                                 <button type="button" id="ajaxSubmit" class="btn btn-primary">إرسال</button>
                             </div>
                         </form>
