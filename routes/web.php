@@ -19,29 +19,22 @@ Route::get('/', [
     'uses' => 'CompanyController@showAllCompany',
     'as' => 'showAllCompany'
 ]);
-
 Route::get('/companyDetails/{id}', [
     'uses' => 'CompanyController@companyDetails',
     'as' => 'companyDetails'
 ]);
-
-
 Route::get('/mng', [
     'uses' => 'Auth\LoginController@showAdminLoginForm',
     'as' => 'adminLogin'
 ]);
-
 Route::post('/mngpostLogin', [
     'uses' => 'Auth\LoginController@adminLogin',
     'as' => 'adminPostLogin'
 ]);
-
-
 Route::get('/login', [
     'uses' => 'Auth\LoginController@userLogin',
     'as' => 'login'
 ]);
-
 Route::post('/postLogin', [
     'uses' => 'Auth\LoginController@postLogin',
     'as' => 'postLogin'
@@ -113,19 +106,15 @@ Route::prefix('user')->group(function() {
     Route::post('/import_excel/import/{id}',[
         'uses' => 'ListController@import',
         'as' => 'user.import'
-    ]);
-
-    // Route::post('/addInvestmentsRequests/{company_id}', [
-    //     'uses' => 'InvestmentsRequestsController@postAddRequests',
-    //     'as' => 'user.addInvestmentsRequests'
-    // ]);
+    ]); 
+    Route::post('addInvestmentsRequests', [
+        'uses' => 'InvestmentsRequestsController@postAddRequests',
+        'as' => 'user.addInvestmentsRequests'
+    ]);   
+    
 
 });
 
-Route::post('/addInvestmentsRequests', [
-    'uses' => 'InvestmentsRequestsController@postAddRequests',
-    'as' => 'addInvestmentsRequests'
-]);
 
 
 

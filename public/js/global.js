@@ -12,14 +12,13 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 $(document).ready(function(){
     $('#ajaxSubmit').click(function(e){
        e.preventDefault();
-
        $.ajax({
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
 
-        url: "../addInvestmentsRequests",
+        url: "../user/addInvestmentsRequests",
         data: {
             'company_id': $('input#company_id').val(),
             "description": $('#description').val(),
