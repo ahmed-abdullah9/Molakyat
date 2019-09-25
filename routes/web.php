@@ -66,7 +66,16 @@ Route::prefix('admin')->group(function() {
         'uses' => 'InvestmentsRequestsController@showAllRequest',
         'as' => 'admin.investmentsRequests'
     ]);
+    Route::get('/showAdmin', [
+        'uses' => 'AdminController@showAllAdmins',
+        'as' => 'admin.showAdmin'
+    ]);
+    Route::get('/showUser', [
+        'uses' => 'UserController@showAllUsers',
+        'as' => 'admin.showUser'
+    ]);
     
+
     });
 // Auth::routes();
 
@@ -99,6 +108,8 @@ Route::prefix('user')->group(function() {
         'uses' => 'CompanyController@postEditCompany',
         'as' => 'user.postEditCompany'
     ]);
+
+    // 
     Route::get('/import_excel/{id}',[
         'uses' => 'ListController@index',
         'as' => 'user.importExcel'
@@ -107,6 +118,7 @@ Route::prefix('user')->group(function() {
         'uses' => 'ListController@import',
         'as' => 'user.import'
     ]); 
+    /// 
     Route::post('addInvestmentsRequests', [
         'uses' => 'InvestmentsRequestsController@postAddRequests',
         'as' => 'user.addInvestmentsRequests'

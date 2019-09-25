@@ -427,7 +427,8 @@
                                 </span>
                             </button>
                         </span>
-                    </div>    <div class="scrollbar-sidebar">
+                    </div>    
+                    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
@@ -454,20 +455,34 @@
                                         
                                     </ul>
                                 </li>
-                                <li
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        Users
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{route('admin.showAdmin')}}">
+                                                <i class="metismenu-icon"></i>
+                                                Admin
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a href="{{route('admin.showUser')}}">
+                                                <i class="metismenu-icon"></i>
+                                                Users
+                                            </a>
+                                        </li>
+                                            
+                                    </ul>
+                                </li>
 
-
-
-
-
-
-
-
-
-
-
-                                >
-                                                           </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 {{-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> --}}

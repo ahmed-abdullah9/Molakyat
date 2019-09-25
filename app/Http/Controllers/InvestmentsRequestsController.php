@@ -17,7 +17,6 @@ class InvestmentsRequestsController extends Controller
     {
         $InvestmentsRequests = InvestmentsRequests::all();
         return view('admin.investmentsRequests', ['InvestmentsRequests' => $InvestmentsRequests]);
-
     }
 
     // /**
