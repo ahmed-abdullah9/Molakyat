@@ -209,7 +209,7 @@
       <!-- Footer Links -->
     
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3"> 2019 Copyright:
+      <div class="footer-copyright text-center py-3" style="color: #f8fafc;"> 2019 Copyright:
             © Molkiat .. All rights reserved
       </div>
       <!-- Copyright -->
