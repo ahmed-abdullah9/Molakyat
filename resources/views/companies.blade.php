@@ -23,13 +23,13 @@
                             <thead>
                                     <tr style="background-color: #223a42 !important; color: #ccc;">
                                     <th scope="col" style="vertical-align: inherit;">الشركة</th>
-                                    <th style="white-space: nowrap; vertical-align: inherit;" scope="col">المبيعات</th>
+                                    <th style="white-space: nowrap; vertical-align: inherit; text-align: center;" scope="col">المبيعات</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">تكلفة المبيعات</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">ايرادات اخرى</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">إجمالي الإيرادات</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">إجمالي المصاريف</th>
-                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">صافي الدخل من العمليات</th>
-                                    <th scope="col" style="vertical-align: inherit;">صافي الدخل قبل الزكاة والضريبة</th>
+                                    <th scope="col" style="white-space: nowrap; vertical-align: inherit;">صافي الدخل<br> من العمليات</th>
+                                    <th scope="col" style="vertical-align: inherit;text-align: center;">صافي الدخل <br> قبل الزكاة والضريبة</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">الزكاة والضريبة</th>
                                     <th scope="col" style="white-space: nowrap; vertical-align: inherit;">صافي الدخل</th>                                    
                                     </tr>

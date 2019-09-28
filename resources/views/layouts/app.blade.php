@@ -20,12 +20,12 @@
 <body>
     <div id="app">     
             <nav class="navbar navbar-expand-lg  navbar-fixed-top scrolled d-flex flex-column flex-md-row p-3 px-md-4 mb-3 bg-white  border-bottom shadow-sm"  >
-                    <div class="container-fluid">
-                      <a  class="navbar-brand" href="{{ route('showAllCompany') }}">
-                        <!-- Logo Image -->
-                        <img src={{ asset("/img/molkyat.jpeg") }} width="300" height="70" alt="Molkyat Logo" class="d-inline-block align-middle mr-2" href>
+                    <div class="container-fluid col-10">
+                      <a  class="navbar-brand" id="logoImage" href="{{ route('showAllCompany') }}">
+                        {{-- <!-- Logo Image -->
+                        <img src={{ asset("/img/molkyat.jpeg") }} width="300" height="70" alt="Molkyat Logo" class="d-inline-block align-middle mr-2">
                         <!-- Logo Text -->
-                        <span class="text-uppercase font-weight-bold"></span>
+                        <span class="text-uppercase font-weight-bold"></span> --}}
                       </a>
                   
                       <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>

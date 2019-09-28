@@ -77,3 +77,12 @@ ul.list-unstyled li a{
     width: 100%;
   }
   
+#logoImage{
+    background-image:url("../img/molkyat.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+    margin: 0px;
+    width: 150px;
+    height: 85px;
+}
