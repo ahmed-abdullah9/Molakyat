@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', [
+Route::get('/{home?}', [
     'uses' => 'CompanyController@showAllCompany',
     'as' => 'showAllCompany'
 ]);

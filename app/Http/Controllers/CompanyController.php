@@ -22,12 +22,15 @@ class CompanyController extends Controller
     }
 
     // for researchers 
-    public function showAllCompany()
+    public function showAllCompany(Request $request)
     {
-        // return view('admin/index');
-        $companies = Company::all();
-        $sectors = Sectors::all();
-        return view('companies', ['companies' => $companies, 'sectors' => $sectors]);
+        $sectorId = $request->query('sector');
+        $sectors = Sectors::when($sectorId, function ($query) use ($sectorId) {
+            return $query->where('id', $sectorId);
+        }) ->get();
+        
+        $allSectors = Sectors::all();
+        return view('companies', ['allSectors' => $allSectors, 'sectors' => $sectors]);
     }
 
     public function companyDetails($id)

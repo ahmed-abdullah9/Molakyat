@@ -11,15 +11,20 @@
 
                     </div>
                     <div class="clearfix"></div>
-                    <select class="form-control m-bot8 col-md-6" name="business_activities">    
-                        @foreach($sectors as $sector)
-                            <option value="{{$sector->id}}">{{$sector->name}}</option>
+                    <select class="form-control m-bot8 col-md-6" name="business_activities" onchange="location = this.value;">    
+                        <option value="{{ url('/') }}">كل السوق</option>
+                        @foreach($allSectors as $sector)
+                            @if ($sector->id == Request::get('sector'))
+                                <option selected="selected" value="{{ url('/home?sector=' . $sector->id) }}">{{$sector->name}}</option>
+                            @else
+                                <option  value="{{ url('/home?sector=' . $sector->id) }}">{{$sector->name}}</option>
+                            @endif
                         @endforeach
                          
                     </select>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped table-hover">
                             <thead>
                                     <tr style="background-color: #223a42 !important; color: #ccc;">
                                     <th scope="col" style="vertical-align: inherit;">الشركة</th>
