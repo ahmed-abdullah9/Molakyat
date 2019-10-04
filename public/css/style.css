@@ -86,3 +86,11 @@ ul.list-unstyled li a{
     width: 150px;
     height: 85px;
 }
+
+
+@media (min-width: 768px)
+{.mb-md-5, .my-md-5 {
+  margin-bottom: 0rem!important;
+}
+}
+  

@@ -38,7 +38,7 @@ class CompanyController extends Controller
         $companies = Company::where('id',$id)->first();
         $user_id = Auth::id();
         $FinancialCenter = FinancialCenter::where('company_id', $id)->get();
-        $FinancialCenter->makeHidden(['id','company_id','created_at', 'updated_at']);
+        $FinancialCenter->makeHidden(['id','company_id', 'year', 'created_at', 'updated_at']);
 
         $imagesData = $FinancialCenter->map(function ($post) {
             $test= $post->toArray();
@@ -94,19 +94,22 @@ class CompanyController extends Controller
         });
 
         $ProfitsAndLosses = ProfitsAndLosses::where('company_id', $id)->get();
-        $ProfitsAndLosses->makeHidden(['id','company_id','created_at', 'updated_at']);
+        $ProfitsAndLosses->makeHidden(['id','company_id', 'year','created_at', 'updated_at']);
 
         $ComprehensiveIncome = ComprehensiveIncome::where('company_id', $id)->get();
-        $ComprehensiveIncome->makeHidden(['id','company_id','created_at', 'updated_at']);
+        $ComprehensiveIncome->makeHidden(['id','company_id', 'year','created_at', 'updated_at']);
 
         $IndirectCashFlows = IndirectCashFlows::where('company_id', $id)->get();
-        $IndirectCashFlows->makeHidden(['id','company_id','created_at', 'updated_at']);
+        $IndirectCashFlows->makeHidden(['id','company_id','year','created_at', 'updated_at']);
+
+        $years = $IndirectCashFlows->pluck('year');
 
         return view('companyDetail', ['FinancialCenter' => $FinancialCenter->toArray(), 
                                     'ProfitsAndLosses' => $ProfitsAndLosses->toArray(),
                                     'ComprehensiveIncome' => $ComprehensiveIncome->toArray(),
                                     'IndirectCashFlows' => $IndirectCashFlows->toArray(),
-                                    'company_id' => $companies->id]);
+                                    'company_id' => $companies->id,
+                                    'years' => $years->toArray()]);
                                    
     }
 
