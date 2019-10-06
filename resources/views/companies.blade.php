@@ -17,7 +17,7 @@
                             @if ($sector->id == Request::get('sector'))
                                 <option selected="selected" value="{{ url('/home?sector=' . $sector->id) }}">{{$sector->name}}</option>
                             @else
-                                <option  value="{{ url('/home?sector=' . $sector->id) }}">{{$sector->name}}</option>
+                                <option  value="{{ url('/home/search?sector=' . $sector->id) }}">{{$sector->name}}</option>
                             @endif
                         @endforeach
                          

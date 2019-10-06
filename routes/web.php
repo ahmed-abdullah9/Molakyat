@@ -11,11 +11,12 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [
+    'uses' => 'CompanyController@showAllCompany',
+    'as' => 'showAllCompany'
+]);
 
-Route::get('/{home?}', [
+Route::get('/home/{search?}', [
     'uses' => 'CompanyController@showAllCompany',
     'as' => 'showAllCompany'
 ]);
