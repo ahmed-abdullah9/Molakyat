@@ -17,7 +17,10 @@ class CreateFinancialCenterTable extends Migration
             $table->increments('id');
             $table->Integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->integer('year');
+
+            $table->dateTime('year');
+            $table->boolean('type');
+            
             //from 3 - 22
             $table->double('current_assets1')->nullable();
             $table->double('current_assets2')->nullable();

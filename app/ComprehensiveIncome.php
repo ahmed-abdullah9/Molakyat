@@ -8,6 +8,8 @@ class ComprehensiveIncome extends Model
 {
     //
     protected $table = 'comprehensive_income'; 
+    
+    protected $fillable = [ 'year']; 
 
 
     public function company()

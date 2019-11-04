@@ -29,14 +29,12 @@ ul.list-unstyled li a{
     padding: 5px 0;
 }
 
-
-
 .authenticate{
 
     background-color: #012353!important;
     color: #fff!important;
     width: 118px;
-    height: 48px;
+    height: 42px;
     font-size: 16px;
     font-weight: 500;
     border-radius: 24px;
@@ -93,4 +91,3 @@ ul.list-unstyled li a{
   margin-bottom: 0rem!important;
 }
 }
-  

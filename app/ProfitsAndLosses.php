@@ -9,6 +9,7 @@ class ProfitsAndLosses extends Model
     //
     protected $table = 'profits_and_losses'; 
 
+    protected $fillable = [ 'year']; 
 
     public function company()
     {

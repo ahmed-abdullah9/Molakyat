@@ -17,7 +17,9 @@ class CreateComprehensiveIncomeTable extends Migration
             $table->increments('id');
             $table->Integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->integer('year');
+            
+            $table->dateTime('year');
+            $table->boolean('type');
 
             // FROM ID 4- 8
             $table->double('comprehensive_income1')->nullable();

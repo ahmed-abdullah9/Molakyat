@@ -60,25 +60,42 @@ class ListController extends Controller
 
         $path = $request->file('select_file')->getRealPath();
 
-        $data = Excel::selectSheets('مركز مالي متداول غير متداول', 'ربح وخسارة حسب الوظيفه', 'تدفقات نقدية غير مباشرة', 'دخل شامل بعد الضريبة')->load($path, function($reader) {
+        $data = Excel::selectSheets('بيانات الادخال', 'مركز مالي متداول غير متداول', 'ربح وخسارة حسب الوظيفه', 'تدفقات نقدية غير مباشرة', 'دخل شامل بعد الضريبة')->load($path, function($reader) {
             $reader->ignoreEmpty();
             $reader->noHeading();
-            $reader->skipRows(19);
+            $reader->skipRows(20);
         })->get();
 
         if($data->count() > 0)
         {
             $data = $data->toArray();
 
-            $collectionForFinance = helper::handleExcel($data[0]);
-            $collectionForProfitsAndLossese = helper::handleExcel($data[1]);
-            $collectionForComprehensiveIncome = helper::handleExcel($data[2]);
-            $collectionForIndirectCashFlows = helper::handleExcel($data[3]);
+            // get the period type then get the year and covert it to match db 
+            $period_type = $data[0][6][6];
+            $period = false;
+            if ($period_type == 'سنوية') {
+                $period = true;
+                
+                $year1 = helper::convertDate($data[0][8][6]);
 
+                $year2 = helper::convertDate($data[0][10][6]);    
+            } else {
+                $year1 = helper::convertDate($data[0][8][6]);
+            }
+
+            $year2 = isset($year2)? $year2 :null ;
+            // separate the 
+            $collectionForFinance = helper::handleExcel($data[1], $year1, $year2, $period);
+            $collectionForProfitsAndLossese = helper::handleExcel($data[2], $year1, $year2, $period);
+            $collectionForComprehensiveIncome = helper::handleExcel($data[3], $year1, $year2, $period);
+            $collectionForIndirectCashFlows = helper::handleExcel($data[4], $year1, $year2, $period);
+
+            
             if (!$collectionForFinance || !$collectionForProfitsAndLossese || !$collectionForComprehensiveIncome || !$collectionForIndirectCashFlows)  
             {
                 return Redirect::back()->withErrors("Please Enter a number instead of string");
             }
+            
             $ImportFinance = ImportFinancialCenter::handleExcel($collectionForFinance, $company->id);
             $ImportProfitsAndLosses = ImportProfitsAndLosses::handleExcel($collectionForProfitsAndLossese, $company->id);
             $ImportComprehensiveIncome = ImportComprehensiveIncome::handleExcel($collectionForComprehensiveIncome, $company->id);
@@ -93,12 +110,16 @@ class ListController extends Controller
                 $ComprehensiveIncome = ComprehensiveIncome::insert($ImportComprehensiveIncome);
                 $IndirectCashFlows = IndirectCashFlows::insert($ImportIndirectCashFlows);                
                 DB::commit();
-                return back()->with('success', 'Excel date has been successfully imported!!');
+                return back()->with('success', 'Excel data has been successfully imported!!');
 
             } catch (Exception $e) 
             {
                 DB::rollBack();
             }
+        }
+        else{
+            return back()->withErrors('error', 'Excel data Failed to Import!!');
+
         }
     }   
 }

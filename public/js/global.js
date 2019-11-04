@@ -33,3 +33,10 @@ $(document).ready(function(){
     });
 })
 });
+
+function showTabs(element)  {
+
+        document.getElementById('quarter').style.display = 'none';
+        document.getElementById('year').style.display = 'none';    
+        document.getElementById(element).style.display = 'block';
+}

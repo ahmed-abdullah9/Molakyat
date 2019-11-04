@@ -6,9 +6,9 @@ table.spec-table {border: 1px solid #fff; width: 100%; margin: 0 0 4em 0;
 }
 table.spec-table>tr>th {background-color: #192d34; color: #fff; font-weight: bold;}
 table.spec-table tr td:nth-child(even) {background: #ddd}
-table.spec-table tr td:nth-child(odd) {background: #f8fafc}
+/* table.spec-table tr td:nth-child(odd) {background: #f8fafc} */
 /* table.spec-table tr:first-child {background: #192d34; font-weight: bold} */
-table.spec-table th, td {font-size: .9em; padding: 7px 60px;}
+table.spec-table th, td {font-size: .9em; padding: 7px 12px;}
 
 tr.orientation { display: table-cell;}
 tr.orientation th, tr.orientation td {     
@@ -43,4 +43,19 @@ th{
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 768px)
+{
+
+.mt-md-5, .my-md-5 {
+    margin-top: 11rem!important;
+}
+}
+
+.list-group{
+  color: white;
+  background: #012352;
+  font-weight: bold;
+  vertical-align: inherit;
 }

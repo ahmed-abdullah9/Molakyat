@@ -37,13 +37,16 @@ class CompanyController extends Controller
     {
         $companies = Company::where('id',$id)->first();
         $user_id = Auth::id();
-        $FinancialCenter = FinancialCenter::where('company_id', $id)->get();
-        $FinancialCenter->makeHidden(['id','company_id', 'year', 'created_at', 'updated_at']);
+        $FinancialCenter = FinancialCenter::where('company_id', $id)->orderBy('year', 'desc')->take(4)->get();
+        $FinancialCenter->makeHidden(['id','company_id', 'created_at', 'updated_at']);
 
         $imagesData = $FinancialCenter->map(function ($post) {
-            $test= $post->toArray();
+            // $post->toArray()['year'] = date('Y-m-d', strtotime($post->toArray()['year']));   
+        
+            // dd($post->toArray()['year']);
+            // $test= $post->toArray();
             $TotalCurrentTaxAssets = $post->current_tax_assets1 + $post->current_tax_assets2;
-            array_splice($test, 23, 0, ['TotalCurrentTaxAssets' => $TotalCurrentTaxAssets]);
+            // array_splice($test, 23, 0, ['TotalCurrentTaxAssets' => $TotalCurrentTaxAssets]);
 
             $TotalCurrentAssetsBefore = $post->current_assets1 + $post->current_assets2 + $post->current_assets3  
                                 + $post->current_assets4 + $post->current_assets5 + $post->current_assets6 + $post->current_assets7
@@ -52,10 +55,10 @@ class CompanyController extends Controller
                                  + $post->current_assets18 + $post->current_assets19 + $post->current_assets20 
                                  + $TotalCurrentTaxAssets;
                                  
-            array_splice($test, 24, 0, ['TotalCurrentAssetsBefore' => $TotalCurrentAssetsBefore]);
+            // array_splice($test, 24, 0, ['TotalCurrentAssetsBefore' => $TotalCurrentAssetsBefore]);
 
             $TotalCurrentAssets = $TotalCurrentAssetsBefore + $post->disposal_groups;
-            array_splice($test, 26, 0, ['TotalCurrentAssets' => $TotalCurrentAssets]);
+            // array_splice($test, 26, 0, ['TotalCurrentAssets' => $TotalCurrentAssets]);
             
             $TotalNonCurrentAssets = $post->non_current_assets1 + $post->non_current_assets2 + $post->non_current_assets3
                                     + $post->non_current_assets4 + $post->non_current_assets5 + $post->non_current_assets6
@@ -65,51 +68,49 @@ class CompanyController extends Controller
                                     + $post->non_current_assets16 + $post->non_current_assets17 + $post->non_current_assets18
                                     + $post->non_current_assets19 + $post->non_current_assets20 + $post->non_current_assets21
                                     + $post->non_current_assets22 + $post->non_current_assets23 + $post->non_current_assets24;
-            array_splice($test, 51, 0, ['TotalNonCurrentAssets' => $TotalNonCurrentAssets]);
+            // array_splice($test, 51, 0, ['TotalNonCurrentAssets' => $TotalNonCurrentAssets]);
 
             $TotalAssets = $TotalNonCurrentAssets + $TotalCurrentAssets;
-            array_splice($test, 52, 0, ['TotalAssets' => $TotalAssets]);
+            // array_splice($test, 52, 0, ['TotalAssets' => $TotalAssets]);
 
-            $TotalCurrentProvisions = $post->currentـliabilities1 + $post->currentـliabilities2;
-            array_splice($test, 55, 0, ['TotalCurrentProvisions' => $TotalCurrentProvisions]);
+            // $TotalCurrentProvisions = $post->currentـliabilities1 + $post->currentـliabilities2;
+            // array_splice($test, 55, 0, ['TotalCurrentProvisions' => $TotalCurrentProvisions]);
 
-            $TotalCurrentZakat = $post->current_tax_liabilities1 + $post->current_tax_liabilities2;
-            array_splice($test, 78, 0, ['TotalCurrentZakat' => $TotalCurrentZakat]);
+            // $TotalCurrentZakat = $post->current_tax_liabilities1 + $post->current_tax_liabilities2;
+            // array_splice($test, 78, 0, ['TotalCurrentZakat' => $TotalCurrentZakat]);
 
-            $TotalLiabilities = $TotalCurrentProvisions + $post->currentـliabilities_special47 + $post->liabilities1
-                                + $post->liabilities2 + $post->liabilities3 + $post->liabilities4 + $post->liabilities5
-                                + $post->liabilities6 + $post->liabilities7 + $post->liabilities8 + $post->liabilities9
-                                + $post->liabilities10 + $post->liabilities11 + $post->liabilities12 + $post->liabilities13
-                                + $post->liabilities14 + $post->liabilities15 + $post->liabilities16 + $post->liabilities17
-                                + $post->liabilities18 + $post->liabilities19 + $TotalCurrentZakat;
-            array_splice($test, 79, 0, ['TotalLiabilities' => $TotalLiabilities]);
+            // $TotalLiabilities = $TotalCurrentProvisions + $post->currentـliabilities_special47 + $post->liabilities1
+            //                     + $post->liabilities2 + $post->liabilities3 + $post->liabilities4 + $post->liabilities5
+            //                     + $post->liabilities6 + $post->liabilities7 + $post->liabilities8 + $post->liabilities9
+            //                     + $post->liabilities10 + $post->liabilities11 + $post->liabilities12 + $post->liabilities13
+            //                     + $post->liabilities14 + $post->liabilities15 + $post->liabilities16 + $post->liabilities17
+            //                     + $post->liabilities18 + $post->liabilities19 + $TotalCurrentZakat;
+            // array_splice($test, 79, 0, ['TotalLiabilities' => $TotalLiabilities]);
 
-            $TotalCurrentLiabilities = $TotalLiabilities + $post->liabilities_directly;
-            array_splice($test, 81, 0, ['TotalCurrentLiabilities' => $TotalCurrentLiabilities]);
+            // $TotalCurrentLiabilities = $TotalLiabilities + $post->liabilities_directly;
+            // array_splice($test, 81, 0, ['TotalCurrentLiabilities' => $TotalCurrentLiabilities]);
 
 
             // dd($test);
 
-            return $post = (object) $test;
+            // return $post = (object) $test;
         });
 
-        $ProfitsAndLosses = ProfitsAndLosses::where('company_id', $id)->get();
-        $ProfitsAndLosses->makeHidden(['id','company_id', 'year','created_at', 'updated_at']);
+        $ProfitsAndLosses = ProfitsAndLosses::where('company_id', $id)->orderBy('year', 'desc')->take(4)->get();
+        $ProfitsAndLosses->makeHidden(['id','company_id', 'created_at', 'updated_at']);
 
-        $ComprehensiveIncome = ComprehensiveIncome::where('company_id', $id)->get();
-        $ComprehensiveIncome->makeHidden(['id','company_id', 'year','created_at', 'updated_at']);
+        $ComprehensiveIncome = ComprehensiveIncome::where('company_id', $id)->orderBy('year', 'desc')->take(4)->get();
+        $ComprehensiveIncome->makeHidden(['id','company_id', 'created_at', 'updated_at']);
 
-        $IndirectCashFlows = IndirectCashFlows::where('company_id', $id)->get();
-        $IndirectCashFlows->makeHidden(['id','company_id','year','created_at', 'updated_at']);
-
-        $years = $IndirectCashFlows->pluck('year');
+        $IndirectCashFlows = IndirectCashFlows::where('company_id', $id)->orderBy('year', 'desc')->take(4)->get();
+        $IndirectCashFlows->makeHidden(['id','company_id', 'created_at', 'updated_at']);
 
         return view('companyDetail', ['FinancialCenter' => $FinancialCenter->toArray(), 
                                     'ProfitsAndLosses' => $ProfitsAndLosses->toArray(),
                                     'ComprehensiveIncome' => $ComprehensiveIncome->toArray(),
                                     'IndirectCashFlows' => $IndirectCashFlows->toArray(),
                                     'company_id' => $companies->id,
-                                    'years' => $years->toArray()]);
+                                    ]);
                                    
     }
 

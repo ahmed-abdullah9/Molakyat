@@ -16,9 +16,12 @@ class CreateProfitsAndLossesTable extends Migration
         // All IDs below are exists in Qawaem excel document (Profit and loss by function)
         Schema::create('profits_and_losses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('year');
             $table->Integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+
+            $table->dateTime('year');
+            $table->boolean('type');
+            
             // From ID 3 - 8
             $table->double('revenues1')->nullable();
             $table->double('revenues2')->nullable();

@@ -16,9 +16,12 @@ class CreateIndirectCashFlowsTable extends Migration
         // All IDs below are exists in Qawaem excel document (Profit and loss by function)
         Schema::create('indirect_cash_flows', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('year');
             $table->Integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            
+            $table->dateTime('year');
+            $table->boolean('type');
+            
             // ID 4
             $table->double('profit_before_zakat')->nullable();
             // FORM ID 8 - 10

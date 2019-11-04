@@ -8,11 +8,11 @@
                                 <div class="page-header" style="margin-bottom: 96px;">
                                          <h2 class="float-right">إدارة شركاتي</h2>
                                         <div class="float-left">
-                                                <a href="{{route('user.addCompany')}}" title="Add new Company">
+                                                <a href="{{route('user.addCompany')}}" title="إضافة شركة">
                                                         <div style="padding-left: 21px;">
                                                                 <img src="https://img.icons8.com/material/48/000000/plus.png">  
                                                         </div>
-                                                        <div>Add new Company</div>
+                                                        <div>إضافة شركة</div>
                                                 </a>                       
                                         </div>
                                         <div class="clearfix"></div>
